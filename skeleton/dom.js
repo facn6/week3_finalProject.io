@@ -45,14 +45,11 @@
   // bind create todo form
   if (addTodoForm) {
     var newState = [];
-    var deleteState =[];
     addTodoForm.addEventListener('submit', function(event) {
       event.preventDefault();
       var input = document.getElementById("item");
       newState =todoFunctions.addTodo(state,{id:todoFunctions.generateId(), description:input.value , done:false});
-     // deleteState =todoFunctions.deleteTodo(state,{id:1});
       update(newState);
-    //  update(deleteState);
       });
 
     
@@ -70,7 +67,15 @@
     state.forEach(function(todo) {
       todoListNode.appendChild(createTodoNode(todo));
     });
-
+    todoListNode.addEventListener('click', function(event) {
+      if(event.target.tagName === 'SPAN')
+      {
+        event.target.classList.toggle('checked')
+          var idToMark = event.target.parentElement.id;
+          document.getElementById(idToMark).className = "checked"; 
+          todoFunctions.markTodo(state, idToMark);
+      }       
+      });
     // you may want to add a class for css
     container.replaceChild(todoListNode, container.firstChild);
   };

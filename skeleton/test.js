@@ -26,8 +26,8 @@ test('deleteTodo test', function(t) {
   existDeleteArray =[{id:-3,description:"first todo" , done:false},
   {id:-2,description:"second todo" ,done:false},
   {id:-1,description:"third todo",done:false}];
-  deleteItem=-3; 
-  var actual = logic.deleteTodo(existDeleteArray,deleteItem);
+  deleteId=-3; 
+  var actual = logic.deleteTodo(existDeleteArray,deleteId);
   var expected = [{id:-2,description:"second todo" ,done:false},
   {id:-1,description:"third todo",done:false}];
   t.deepEqual(actual, expected, 'the todo faild to remove it from the list');
@@ -35,16 +35,28 @@ test('deleteTodo test', function(t) {
 });
 
 test('markTodo test', function(t) {
-  var actual = logic.markTodo(["a","b","c"], 2);
-  var expected = ["a","b","c,done"];
-  t.equal(actual, expected, 'the todo faild to remove it from the list');
+  existMarkArray =[{id:-3,description:"first todo" , done:false},
+  {id:-2,description:"second todo" ,done:false},
+  {id:-1,description:"third todo",done:false}];
+  markId=-3; 
+  var actual = logic.markTodo(existMarkArray, markId);
+  var expected = [{id:-3,description:"first todo" , done:true},
+  {id:-2,description:"second todo" ,done:false},
+  {id:-1,description:"third todo",done:false}];
+  t.deepEqual(actual, expected, 'the todo faild to remove it from the list');
   t.end();
 });
 
 
-test('sortTodos test', function(t) {
-  var actual = logic.sortTodos(["a","b","c"], ["a","b","c"].sort());
-  var expected = ["a","b","c"];
-  t.equal(actual, expected, 'the todo list faild to sort');
-  t.end();
-});
+// test('sortTodos test', function(t) {
+//   existSortArray =[{id:-3,description:"zirst todo" , done:false},
+//   {id:-2,description:"wecond todo" ,done:false},
+//   {id:-1,description:"third todo",done:false}];
+//   sortFunction = logic.sort(existSortArray);
+//   var actual = logic.sortTodos(existSortArray, sortFunction);
+//   var expected = [{id:-1,description:"third todo",done:false},
+//   {id:-2,description:"wecond todo" ,done:false},
+//   {id:-3,description:"zirst todo" , done:false}];
+//   t.equal(actual, expected, 'the todo list faild to sort');
+//   t.end();
+// });

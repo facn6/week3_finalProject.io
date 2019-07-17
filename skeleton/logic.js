@@ -48,7 +48,28 @@ var todoFunctions = {
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
     // this element will have its done value toggled
     // hint: array.map
+    exisToDoArray = this.cloneArrayOfObjects(todos);
+
+    return exisToDoArray.map(function(item){
+      if(item.id == idToMark)
+      {
+        if(item.done == true)
+          {
+            item.done = false;
+          }
+          else
+          {
+            item.done = true;
+
+          }
+          
+      }
+
+      return item;
+    })
+
   },
+ 
   sortTodos: function(todos, sortFunction) {
     // stretch goal! Do this last
     // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
