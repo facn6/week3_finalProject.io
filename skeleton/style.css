@@ -1,6 +1,6 @@
 /* When clicked on, add a background color and strike out text */
 span.checked {
-  background: #888;
+  background: #fff;
   color: #fff;
   text-decoration: line-through;
 }
